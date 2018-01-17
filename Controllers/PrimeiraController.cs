@@ -11,7 +11,7 @@ namespace WebServicesCidades.Controllers
     {
         
 
-        Cidades cidade = new Cidades();
+        
 
         DAOCidades dao = new DAOCidades();
         [HttpGet] 
@@ -21,8 +21,15 @@ namespace WebServicesCidades.Controllers
         }
 
         [HttpGet("{id}")]
+
         public Cidades Get(int id){
             return dao.Listar().Where(x => x.Id==id).FirstOrDefault() ;
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]Cidades cidades){
+            dao.Cadastro(cidades);
+            return CreatedAtRoute("CidadeAtual", new{id = cidades.Id},cidades);
         }
 
         //[HttpGet("{id}")] //Busca dado por cliente e passando um parâmetro

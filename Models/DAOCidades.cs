@@ -61,6 +61,7 @@ namespace WebServicesCidades.Models
                 con = new SqlConnection(conexao);
                 con.Open();
                 cmd = new SqlCommand();
+                cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "insert into Cidades(Nome,Estado, Habitantes) values (@n,@e,@h)";
                 cmd.Parameters.AddWithValue("@n", cidades.Nome);
@@ -97,11 +98,47 @@ namespace WebServicesCidades.Models
                 con = new SqlConnection(conexao);
                 con.Open();
                 cmd = new SqlCommand();
+                cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Cidades(Nome,Estado, Habitantes) values (@n,@e,@h)";
+                cmd.CommandText = "update Cidades set Nome =@n, Estado = @e, Habitantes = @h where Id = @id";
+                cmd.Parameters.AddWithValue("@id", cidades.Id);
                 cmd.Parameters.AddWithValue("@n", cidades.Nome);
                 cmd.Parameters.AddWithValue("@e", cidades.Estado);
                 cmd.Parameters.AddWithValue("@h", cidades.Habitantes);
+
+                int r = cmd.ExecuteNonQuery();
+                if (r > 0)
+                    resultado = true;
+
+                cmd.Parameters.Clear();
+            }
+            catch (SqlException se)
+            {
+                throw new ConstraintException(se.Message);
+            }
+            catch (ConstraintException ex)
+            {
+                throw new ConstraintException(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return resultado;
+        }
+
+        public bool Apagar(int id)
+        {
+            bool resultado = false;
+            try
+            {
+                con = new SqlConnection(conexao);
+                con.Open();
+                cmd = new SqlCommand();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = "delete from Cidades where Id = @id";   
+                cmd.Parameters.AddWithValue("@id", id);  
 
                 int r = cmd.ExecuteNonQuery();
                 if (r > 0)
