@@ -63,7 +63,7 @@ namespace WebServicesCidades.Models
                 cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "insert into Cidades(Nome,Estado, Habitantes) values (@n,@e,@h)";
+                cmd.CommandText = "insert into Cidades(Nome,Estado,Habitantes) values (@n,@e,@h)";
                 cmd.Parameters.AddWithValue("@n", cidades.Nome);
                 cmd.Parameters.AddWithValue("@e", cidades.Estado);
                 cmd.Parameters.AddWithValue("@h", cidades.Habitantes);
