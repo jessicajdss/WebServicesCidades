@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\FIC\\Desktop\\WebServicesCidades\\WebServicesCidades.csproj",
+      "projectUniqueName": "c:\\Users\\FIC\\Desktop\\WebServicesCidades\\WebServicesCidades.csproj",
       "projectName": "WebServicesCidades",
-      "projectPath": "C:\\Users\\FIC\\Desktop\\WebServicesCidades\\WebServicesCidades.csproj",
+      "projectPath": "c:\\Users\\FIC\\Desktop\\WebServicesCidades\\WebServicesCidades.csproj",
       "packagesPath": "C:\\Users\\FIC\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\FIC\\Desktop\\WebServicesCidades\\obj\\",
+      "outputPath": "c:\\Users\\FIC\\Desktop\\WebServicesCidades\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

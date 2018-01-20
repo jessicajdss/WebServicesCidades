@@ -136,6 +136,7 @@ namespace WebServicesCidades.Models
                 con = new SqlConnection(conexao);
                 con.Open();
                 cmd = new SqlCommand();
+                cmd.Connection = con;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = "delete from Cidades where Id = @id";   
                 cmd.Parameters.AddWithValue("@id", id);  

@@ -29,8 +29,13 @@ namespace WebServicesCidades.Controllers
             dao.Cadastro(cidades);
             return CreatedAtRoute("CidadeAtual", new{id = cidades.Id},cidades);
         }
-
-        public IActionResult Delete([FromBody]int id){
+        [HttpPut("{id}")]
+        public IActionResult Editar([FromBody]Cidades cidades){
+            dao.Editar(cidades);
+            return CreatedAtRoute("CidadeAtual", new{id = cidades.Id},cidades);
+        }
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id){
             dao.Apagar(id);
             return CreatedAtRoute("CidadeAtual", id);
         }
